@@ -10,7 +10,6 @@
 
 package nl.matsv.viabackwards.api.rewriters;
 
-import net.md_5.bungee.api.ChatColor;
 import nl.matsv.viabackwards.api.BackwardsProtocol;
 import nl.matsv.viabackwards.api.data.MappedLegacyBlockItem;
 import nl.matsv.viabackwards.api.data.VBMappingDataLoader;
@@ -240,7 +239,7 @@ public abstract class LegacyBlockItemRewriter<T extends BackwardsProtocol> exten
     protected CompoundTag getNamedTag(String text) {
         CompoundTag tag = new CompoundTag("");
         tag.put(new CompoundTag("display"));
-        text = ChatColor.RESET + text;
+        text = "§r" + text;
         ((CompoundTag) tag.get("display")).put(new StringTag("Name", jsonNameFormat ? ChatRewriter.legacyTextToJson(text).toString() : text));
         return tag;
     }

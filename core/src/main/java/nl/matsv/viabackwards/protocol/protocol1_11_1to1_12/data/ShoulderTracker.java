@@ -10,7 +10,6 @@
 
 package nl.matsv.viabackwards.protocol.protocol1_11_1to1_12.data;
 
-import net.md_5.bungee.api.ChatColor;
 import nl.matsv.viabackwards.ViaBackwards;
 import nl.matsv.viabackwards.protocol.protocol1_11_1to1_12.Protocol1_11_1To1_12;
 import us.myles.ViaVersion.api.PacketWrapper;
@@ -48,26 +47,28 @@ public class ShoulderTracker extends StoredObject {
 
         // Empty spaces because the non-json formatting is weird
         builder.append("  ");
-        if (leftShoulder == null)
-            builder.append(ChatColor.RED).append(ChatColor.BOLD).append("Nothing");
-        else
-            builder.append(ChatColor.DARK_GREEN).append(ChatColor.BOLD).append(getName(leftShoulder));
+        if (leftShoulder == null) {
+            builder.append("§4§lNothing");
+        } else {
+            builder.append("§2§l").append(getName(leftShoulder));
+        }
 
-        builder.append(ChatColor.DARK_GRAY).append(ChatColor.BOLD).append(" <- ")
-                .append(ChatColor.GRAY).append(ChatColor.BOLD).append("Shoulders")
-                .append(ChatColor.DARK_GRAY).append(ChatColor.BOLD).append(" -> ");
+        builder.append("§8§l <- §7§lShoulders§8§l -> ");
 
-        if (rightShoulder == null)
-            builder.append(ChatColor.RED).append(ChatColor.BOLD).append("Nothing");
-        else
-            builder.append(ChatColor.DARK_GREEN).append(ChatColor.BOLD).append(getName(rightShoulder));
+        if (rightShoulder == null) {
+            builder.append("§4§lNothing");
+        } else {
+            builder.append("§2§l").append(getName(rightShoulder));
+        }
 
         return builder.toString();
     }
 
     private String getName(String current) {
-        if (current.startsWith("minecraft:"))
+        if (current.startsWith("minecraft:")) {
             current = current.substring(10);
+        }
+
         String[] array = current.split("_");
         StringBuilder builder = new StringBuilder();
 

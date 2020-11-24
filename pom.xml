@@ -65,7 +65,7 @@
         <dependency>
             <groupId>us.myles</groupId>
             <artifactId>viaversion</artifactId>
-            <version>3.3.0-20w45a</version>
+            <version>3.3.0-20w46a</version>
             <scope>provided</scope>
         </dependency>
 
@@ -74,6 +74,13 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>19.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>17.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -1,6 +1,5 @@
 package nl.matsv.viabackwards.api.data;
 
-import net.md_5.bungee.api.ChatColor;
 import nl.matsv.viabackwards.utils.Block;
 import org.jetbrains.annotations.Nullable;
 import us.myles.viaversion.libs.opennbt.tag.builtin.CompoundTag;
@@ -16,7 +15,7 @@ public class MappedLegacyBlockItem {
     public MappedLegacyBlockItem(int id, short data, @Nullable String name, boolean block) {
         this.id = id;
         this.data = data;
-        this.name = name != null ? ChatColor.RESET + name : null;
+        this.name = name != null ? "§r" + name : null;
         this.block = block ? new Block(id, data) : null;
     }
 

@@ -545,7 +545,7 @@ public class BlockItemPackets1_14 extends nl.matsv.viabackwards.api.rewriters.It
 
                             String value = ((StringTag) loreEntry).getValue();
                             if (value != null && !value.isEmpty()) {
-                                ((StringTag) loreEntry).setValue(ChatRewriter.jsonTextToLegacy(value));
+                                ((StringTag) loreEntry).setValue(ChatRewriter.jsonToLegacyText(value));
                             }
                         }
                     }

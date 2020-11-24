@@ -1,6 +1,5 @@
 package nl.matsv.viabackwards.api.data;
 
-import net.md_5.bungee.api.ChatColor;
 import us.myles.ViaVersion.protocols.protocol1_13to1_12_2.ChatRewriter;
 
 public class MappedItem {
@@ -10,7 +9,7 @@ public class MappedItem {
 
     public MappedItem(int id, String name) {
         this.id = id;
-        this.jsonName = ChatRewriter.legacyTextToJson(ChatColor.RESET + name).toString();
+        this.jsonName = ChatRewriter.legacyTextToJson("§r" + name).toString();
     }
 
     public int getId() {

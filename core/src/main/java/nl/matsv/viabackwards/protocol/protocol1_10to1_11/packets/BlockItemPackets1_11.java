@@ -10,7 +10,6 @@
 
 package nl.matsv.viabackwards.protocol.protocol1_10to1_11.packets;
 
-import net.md_5.bungee.api.ChatColor;
 import nl.matsv.viabackwards.api.data.MappedLegacyBlockItem;
 import nl.matsv.viabackwards.api.entities.storage.EntityTracker;
 import nl.matsv.viabackwards.api.rewriters.LegacyBlockItemRewriter;
@@ -449,7 +448,7 @@ public class BlockItemPackets1_11 extends LegacyBlockItemRewriter<Protocol1_10To
         int endNonExistingFormula = 2 + 3 * (storage.isChested() ? 5 : 0);
 
         if (slotId >= startNonExistingFormula && slotId < endNonExistingFormula)
-            return new Item(166, (byte) 1, (short) 0, getNamedTag(ChatColor.RED + "SLOT DISABLED"));
+            return new Item(166, (byte) 1, (short) 0, getNamedTag("§4SLOT DISABLED"));
         if (slotId == 1)
             return null;
         return current;

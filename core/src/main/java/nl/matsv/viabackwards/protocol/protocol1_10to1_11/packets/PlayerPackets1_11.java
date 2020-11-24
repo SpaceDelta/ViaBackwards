@@ -10,9 +10,6 @@
 
 package nl.matsv.viabackwards.protocol.protocol1_10to1_11.packets;
 
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.chat.ComponentSerializer;
 import nl.matsv.viabackwards.protocol.protocol1_10to1_11.Protocol1_10To1_11;
 import us.myles.ViaVersion.api.PacketWrapper;
 import us.myles.ViaVersion.api.remapper.PacketRemapper;
@@ -22,6 +19,8 @@ import us.myles.ViaVersion.protocols.protocol1_9_3to1_9_1_2.ClientboundPackets1_
 import us.myles.ViaVersion.protocols.protocol1_9_3to1_9_1_2.ServerboundPackets1_9_3;
 import us.myles.viaversion.libs.gson.JsonElement;
 import us.myles.viaversion.libs.gson.JsonObject;
+import us.myles.viaversion.libs.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
+import us.myles.viaversion.libs.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 public class PlayerPackets1_11 {
     private static final ValueTransformer<Short, Float> TO_NEW_FLOAT = new ValueTransformer<Short, Float>(Type.FLOAT) {
@@ -47,8 +46,7 @@ public class PlayerPackets1_11 {
                         wrapper.setId(ClientboundPackets1_9_3.CHAT_MESSAGE.ordinal());
 
                         // https://bugs.mojang.com/browse/MC-119145to
-                        BaseComponent[] parsed = ComponentSerializer.parse(message.toString());
-                        String legacy = TextComponent.toLegacyText(parsed);
+                        String legacy = LegacyComponentSerializer.legacySection().serialize(GsonComponentSerializer.gson().deserialize(message.toString()));
                         message = new JsonObject();
                         message.getAsJsonObject().addProperty("text", legacy);
 
