@@ -54,6 +54,11 @@ public class BackwardsBlockEntityProvider implements Provider {
      * @param tag      The block entity tag
      */
     public CompoundTag transform(UserConnection user, Position position, CompoundTag tag) throws Exception {
+        // For client optimization, server may send spawners with empty data
+        // to prevent the client from animating the spawner
+        if (!tag.contains("id"))
+            return tag;
+
         String id = (String) tag.get("id").getValue();
         BackwardsBlockEntityHandler handler = handlers.get(id);
         if (handler == null) {
